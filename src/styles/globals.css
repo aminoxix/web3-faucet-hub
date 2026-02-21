@@ -1,3 +1,101 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@layer base {
+  body {
+    @apply bg-dark-950 text-white font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+  }
+  .glass-hover {
+    @apply hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300;
+  }
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl
+    hover:bg-white/[0.06] hover:border-white/[0.12]
+    transition-all duration-300 hover:shadow-lg hover:shadow-white/[0.02];
+  }
+
+  /* Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold text-sm
+    bg-gradient-to-r from-violet-600 to-indigo-600
+    hover:from-violet-500 hover:to-indigo-500
+    transition-all duration-300
+    shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30
+    active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed
+    disabled:hover:shadow-violet-500/20;
+  }
+  .btn-ghost {
+    @apply px-4 py-2 rounded-xl font-medium text-sm text-white/60
+    hover:text-white hover:bg-white/[0.06]
+    transition-all duration-200;
+  }
+  .btn-collect {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold
+    bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.08]
+    hover:border-white/[0.16] transition-all duration-200
+    active:scale-[0.96];
+  }
+
+  /* Nav */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+    text-white/50 hover:text-white hover:bg-white/[0.06]
+    transition-all duration-200;
+  }
+  .nav-link-active {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+    text-white bg-white/[0.06] border border-white/[0.08];
+  }
+}
+
+/* Animated gradient background orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+.orb-violet {
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+}
+.orb-indigo {
+  background: radial-gradient(circle, #4f46e5, transparent 70%);
+}
+.orb-purple {
+  background: radial-gradient(circle, #9333ea, transparent 70%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Selection */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
