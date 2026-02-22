@@ -61,6 +61,175 @@
     @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
     text-white bg-white/[0.06] border border-white/[0.08];
   }
+
+  /* Sidebar tooltip */
+  .sidebar-tooltip {
+    @apply invisible opacity-0 absolute left-full top-1/2 -translate-y-1/2 ml-4
+    px-3 py-1.5 rounded-lg text-xs font-medium text-white
+    bg-dark-900 border border-white/[0.08]
+    whitespace-nowrap z-[60] pointer-events-none
+    transition-all duration-200 ease-in-out;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+  .sidebar-tooltip::before {
+    content: "";
+    @apply absolute top-1/2 -translate-y-1/2 -left-1.5;
+    width: 6px;
+    height: 6px;
+    background: theme("colors.dark.900");
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+/* ========================================
+   Sidebar Collapse System (CSS-only)
+   Uses :has(#sidebar-toggle:checked) —
+   no React state needed.
+   ======================================== */
+
+/* Base transitions for collapsible text */
+.sidebar-text {
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.sidebar-logo-inner {
+  transition: gap 0.3s ease;
+}
+
+/* Toggle chevron: points left when expanded */
+.toggle-chevron {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* --- Collapsed State (checkbox checked) --- */
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar {
+  width: 72px;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) > main {
+  margin-left: 72px;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .toggle-btn {
+  left: 58px;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .toggle-chevron {
+  transform: rotate(0deg);
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-text {
+  width: 0;
+  opacity: 0;
+  transform: translateX(-0.5rem);
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-logo {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-logo-inner {
+  justify-content: center;
+  gap: 0;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .nav-link,
+.sidebar-wrapper:has(#sidebar-toggle:checked) .nav-link-active {
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: center;
+  gap: 0;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-bottom {
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  justify-content: center;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 0;
+}
+
+.sidebar-wrapper:has(#sidebar-toggle:checked) .sidebar-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Tooltips: show on hover only when collapsed */
+.sidebar-wrapper:has(#sidebar-toggle:checked) .group:hover > .sidebar-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- Mobile: always collapsed, no toggle --- */
+
+@media (max-width: 767px) {
+  .sidebar-wrapper .sidebar {
+    width: 72px;
+  }
+  .sidebar-wrapper > main {
+    margin-left: 72px;
+  }
+  .sidebar-wrapper .sidebar-text {
+    width: 0;
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  .sidebar-wrapper .sidebar-logo {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sidebar-wrapper .sidebar-logo-inner {
+    justify-content: center;
+    gap: 0;
+  }
+  .sidebar-wrapper .nav-link,
+  .sidebar-wrapper .nav-link-active {
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: center;
+    gap: 0;
+  }
+  .sidebar-wrapper .sidebar-bottom {
+    padding: 0.5rem;
+    align-items: center;
+  }
+  .sidebar-wrapper .sidebar-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    justify-content: center;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0;
+  }
+  .sidebar-wrapper .sidebar-dot {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .sidebar-wrapper .group:hover > .sidebar-tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 /* Animated gradient background orbs */

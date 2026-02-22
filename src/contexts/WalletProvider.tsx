@@ -105,7 +105,7 @@ const WalletProvider = (props: PropsWithChildren) => {
   }, [wallet]);
 
   useEffect(() => {
-    router.push(isLoggedIn ? "/dashboard" : "/landing");
+    router.push(isLoggedIn ? "/dashboard" : "/");
   }, [isLoggedIn]);
 
   let ethersProvider: ethers.providers.Web3Provider | undefined;

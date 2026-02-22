@@ -1,4 +1,3 @@
-import { env } from "./src/env/server.mjs";
 
 /**
  * Don't be scared of the generics here.
@@ -8,22 +7,14 @@ import { env } from "./src/env/server.mjs";
  * @param {T} config - A generic parameter that flows through to the return type
  * @constraint {{import('next').NextConfig}}
  */
-function defineNextConfig ( config )
-{
+function defineNextConfig(config) {
   return config;
 }
 
-export default defineNextConfig( {
+export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
-  async redirects ()
-  {
-    return [
-      {
-        source: '/',
-        destination: '/landing',
-        permanent: true,
-      },
-    ]
+  async redirects() {
+    return []
   },
-} );
+});

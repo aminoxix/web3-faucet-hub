@@ -52,7 +52,7 @@ src/
 ├── contexts/
 │   └── WalletProvider.tsx     # wallet auth
 ├── pages/
-│   ├── landing.tsx            # connect wallet
+│   ├── index.tsx              # connect wallet
 │   └── dashboard/
 │       ├── index.tsx          # faucet grid
 │       ├── deposit.tsx        # receive tokens

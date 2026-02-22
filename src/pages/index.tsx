@@ -2,7 +2,7 @@ import { useWalletContext } from "@contexts/WalletProvider";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-const Landing: NextPage = () => {
+const WalletConnect: NextPage = () => {
   const { login, connecting } = useWalletContext();
 
   return (
@@ -122,4 +122,4 @@ const Landing: NextPage = () => {
   );
 };
 
-export default Landing;
+export default WalletConnect;
